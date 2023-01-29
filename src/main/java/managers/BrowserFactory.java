@@ -44,8 +44,7 @@ public class BrowserFactory {
                 capabilities.setCapability("browserVersion", "109.0");
                 capabilities.setCapability("selenoid:options", Map.<String, Object>of(
                         "enableVNC", true,
-                        "enableVideo", true
-                ));
+                        "enableVideo", true));
                 capabilities.setBrowserName(browser);
                 switch (browser) {
                     case "chrome":
@@ -56,7 +55,8 @@ public class BrowserFactory {
                 try {
                     driver = new RemoteWebDriver(
                             URI.create("http://149.154.71.152:8080/wd/hub").toURL(),
-                            capabilities);
+                            capabilities
+                    );
                 } catch (MalformedURLException e) {
                     e.printStackTrace();
                 }
