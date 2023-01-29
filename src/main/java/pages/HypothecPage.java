@@ -45,7 +45,7 @@ public class HypothecPage extends BasePage {
 
     @Step("Заполнить поле {fieldName} значением {value}")
     public HypothecPage fillFields(String fieldName, String value) {
-        logger.info("Заполнить поле");
+        logger.info("Заполнение поле {fieldName} значением {value}");
         for (WebElement fieldItem : listFieldName) {
             if (fieldItem.getText().contains(fieldName)) {
                 listInputField.get(listFieldName.indexOf(fieldItem)).click();
@@ -67,9 +67,9 @@ public class HypothecPage extends BasePage {
         }
     }
 
-    @Step("Выключить чекбокс страхование жизни")
+    @Step("Выключить чекбокс 'Страхование жизни и здоровья'")
     public HypothecPage clickInsuranceCheckBox() {
-        logger.info("Выклбючить чекбокс");
+        logger.info("Выключение чекбокса 'Страхование жизни и здоровья'");
         clickToElementJs(insuranceCheckBox);
         return this;
     }

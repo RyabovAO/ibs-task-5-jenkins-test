@@ -25,7 +25,7 @@ public class BasePage {
     protected WebDriverWait wait = new WebDriverWait(driverManager.getDriver(),
             Duration.ofSeconds(Long.parseLong(props.getProperty(PropConst.EXPECTED_COND_TIMEOUT))),
             Duration.ofSeconds(Long.parseLong(props.getProperty(PropConst.EXPECTED_COND_SLEEP))));
-    protected Logger logger = LoggerFactory.getLogger(BasePage.class);
+    protected static final Logger logger = LoggerFactory.getLogger(BasePage.class);
 
     public BasePage() {
         PageFactory.initElements(driverManager.getDriver(), this);

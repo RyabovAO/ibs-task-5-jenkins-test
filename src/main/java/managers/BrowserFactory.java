@@ -5,10 +5,8 @@ import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
-
 import java.net.MalformedURLException;
 import java.net.URI;
-import java.util.Map;
 
 public class BrowserFactory {
 
@@ -40,11 +38,7 @@ public class BrowserFactory {
             case REMOTE:
                 String browser = System.getProperty("browser", "chrome");
                 DesiredCapabilities capabilities = new DesiredCapabilities();
-                //capabilities.setCapability("browserName", browser);
                 capabilities.setCapability("browserVersion", "109.0");
-//                capabilities.setCapability("selenoid:options", Map.<String, Object>of(
-//                        "enableVNC", true,
-//                        "enableVideo", true));
                 capabilities.setCapability("enableVNC", true);
                 capabilities.setCapability("enableVideo", false);
                 capabilities.setBrowserName(browser);

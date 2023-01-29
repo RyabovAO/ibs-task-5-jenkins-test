@@ -23,7 +23,7 @@ public class SubMenuHypothecBlock extends BasePage{
     }
     @Step("В меню блока 'Ипотека' выбрать подменю {menuName}")
     public HypothecPage chooseSubMenu(String menuName) {
-        logger.info("Выбор подменю");
+        logger.info("Выбор подменю {menuName}");
         for (WebElement menuItem : subMenuHypothec) {
             if (menuItem.getText().contains(menuName)) {
                 menuItem.click();

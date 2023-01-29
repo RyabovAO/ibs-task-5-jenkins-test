@@ -23,7 +23,7 @@ public class StartPage extends BasePage {
 
     @Step("Выбрать из списка основного меню {menuName}")
     public SubMenuHypothecBlock chooseMenu(String menuName) {
-        logger.info("Выбрать меню");
+        logger.info("Выбор меню {menuName}");
         for (WebElement menuItem : topMenu) {
             if (menuItem.getText().contains(menuName)) {
                 menuItem.click();
