@@ -4,9 +4,14 @@ import io.qameta.allure.Step;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.List;
 
 public class SubMenuHypothecBlock extends BasePage{
+
+    private static final Logger logger = LoggerFactory.getLogger(SubMenuHypothecBlock.class);
 
     @FindBy(xpath = "//*[contains(@class,'menu__item_opened')]//div[contains(@class,'__subaction-block')]//a[contains(@rel,'noopener noreferrer')]")
     private WebElement menuHypothecId;
@@ -23,7 +28,7 @@ public class SubMenuHypothecBlock extends BasePage{
     }
     @Step("В меню блока 'Ипотека' выбрать подменю {menuName}")
     public HypothecPage chooseSubMenu(String menuName) {
-        logger.info("Выбор подменю {menuName}");
+        logger.info("Выбор подменю {}", menuName);
         for (WebElement menuItem : subMenuHypothec) {
             if (menuItem.getText().contains(menuName)) {
                 menuItem.click();

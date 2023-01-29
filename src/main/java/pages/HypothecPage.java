@@ -6,9 +6,14 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.List;
 
 public class HypothecPage extends BasePage {
+
+    private static final Logger logger = LoggerFactory.getLogger(HypothecPage.class);
 
     @FindBy(xpath = "//*[contains(@sandbox,'allow-forms allow-scripts allow-same')]")
     private WebElement formRegistration;
@@ -45,7 +50,7 @@ public class HypothecPage extends BasePage {
 
     @Step("Заполнить поле {fieldName} значением {value}")
     public HypothecPage fillFields(String fieldName, String value) {
-        logger.info("Заполнение поле {fieldName} значением {value}");
+        logger.info("Заполнение поле {} значением {}", fieldName, value);
         for (WebElement fieldItem : listFieldName) {
             if (fieldItem.getText().contains(fieldName)) {
                 listInputField.get(listFieldName.indexOf(fieldItem)).click();

@@ -4,9 +4,14 @@ import io.qameta.allure.Step;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.List;
 
 public class StartPage extends BasePage {
+
+    private static final Logger logger = LoggerFactory.getLogger(StartPage.class);
 
     @FindBy(xpath = "//*[@class='kitt-header__logo']")
     private WebElement logo;
@@ -23,7 +28,7 @@ public class StartPage extends BasePage {
 
     @Step("Выбрать из списка основного меню {menuName}")
     public SubMenuHypothecBlock chooseMenu(String menuName) {
-        logger.info("Выбор меню {menuName}");
+        logger.info("Выбор меню {}", menuName);
         for (WebElement menuItem : topMenu) {
             if (menuItem.getText().contains(menuName)) {
                 menuItem.click();
