@@ -16,12 +16,14 @@ public class StartPage extends BasePage {
 
     @Step("Проверка что открыта стартовая страница Сбербанка")
     public StartPage checkStartPAge() {
+        logger.info("Проверка открытия стартовой страницы");
         Assertions.assertTrue(isPageOpen(logo), "Стартовая страница не открыта");
         return this;
     }
 
     @Step("Выбрать из списка основного меню {menuName}")
     public SubMenuHypothecBlock chooseMenu(String menuName) {
+        logger.info("Выбрать меню");
         for (WebElement menuItem : topMenu) {
             if (menuItem.getText().contains(menuName)) {
                 menuItem.click();

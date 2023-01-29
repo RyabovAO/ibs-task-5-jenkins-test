@@ -16,12 +16,14 @@ public class SubMenuHypothecBlock extends BasePage{
 
     @Step("Проверка открытия блока 'Ипотека'")
     public SubMenuHypothecBlock checkHypothecBlock() {
+        logger.info("Проверка открытия блока Ипотека");
         waitUtilElementToBeVisible(menuHypothecId);
         Assertions.assertTrue(isPageOpen(menuHypothecId), "Блок подменю 'Ипотеки' не открыт");
         return this;
     }
     @Step("В меню блока 'Ипотека' выбрать подменю {menuName}")
     public HypothecPage chooseSubMenu(String menuName) {
+        logger.info("Выбор подменю");
         for (WebElement menuItem : subMenuHypothec) {
             if (menuItem.getText().contains(menuName)) {
                 menuItem.click();

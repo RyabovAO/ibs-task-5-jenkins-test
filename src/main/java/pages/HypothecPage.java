@@ -30,6 +30,7 @@ public class HypothecPage extends BasePage {
 
     @Step("Проверка что открыта страница 'Ипотека'")
     public HypothecPage checkHypothecPage() {
+        logger.info("Проверка открытия страницы Ипотека");
         waitUtilElementToBeVisible(formRegistration);
         Assertions.assertTrue(isPageOpen(formRegistration), "Страница 'Ипотека' не открыта");
         return this;
@@ -44,6 +45,7 @@ public class HypothecPage extends BasePage {
 
     @Step("Заполнить поле {fieldName} значением {value}")
     public HypothecPage fillFields(String fieldName, String value) {
+        logger.info("Заполнить поле");
         for (WebElement fieldItem : listFieldName) {
             if (fieldItem.getText().contains(fieldName)) {
                 listInputField.get(listFieldName.indexOf(fieldItem)).click();
@@ -67,12 +69,14 @@ public class HypothecPage extends BasePage {
 
     @Step("Выключить чекбокс страхование жизни")
     public HypothecPage clickInsuranceCheckBox() {
+        logger.info("Выклбючить чекбокс");
         clickToElementJs(insuranceCheckBox);
         return this;
     }
 
     @Step("Прверка что чекбокс выключен")
     public HypothecPage checkInsuranceCheckBox() {
+        logger.info("Проверка чекбокса");
         waitUtilElementToBeVisible(checkInsuranceCheckBox);
         Assertions.assertTrue(checkInsuranceCheckBox.isDisplayed(),
                 "Чекбокс 'Страхование жизни и здоровья' выключен");
@@ -81,6 +85,7 @@ public class HypothecPage extends BasePage {
 
     @Step("Проверить что значение поля {resTitle} соответствует значению {value}")
     public HypothecPage checkCreditInfo(String resTitle, String value) {
+        logger.info("Проверка значений полей");
         Assertions.assertEquals(value, getCreditResult(resTitle), "Параметры кредита не совпадают");
         return this;
     }

@@ -20,13 +20,12 @@ public class BaseTests {
     protected PageManager pageManager = PageManager.getInstance();
     private final TestPropManager props = TestPropManager.getInstance();
 
-
     @BeforeAll
     public static void beforeAll() {
         InitFramework.initFramework();
     }
 
-    @Step("Запуск браузера и открытие страницы стартовой страницы Сюербанка")
+    @Step("Запуск браузера и открытие страницы стартовой страницы Сбербанка")
     @BeforeEach
     public void beforeEach() {
         driverManager.getDriver().get(props.getProperty(PropConst.BASE_URL));

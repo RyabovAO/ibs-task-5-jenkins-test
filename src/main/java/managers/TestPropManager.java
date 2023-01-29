@@ -34,8 +34,22 @@ public class TestPropManager {
         }
     }
 
+    private void loadCustomProperties() {
+        properties.forEach((key, value) -> System.getProperties()
+                .forEach((customUserKey, customUserValue) -> {
+                    if (key.toString().equals(customUserKey.toString()) &&
+                            !value.toString().equals(customUserValue.toString())) {
+                        properties.setProperty(key.toString(), customUserValue.toString());
+                    }
+                }));
+    }
+
     public String getProperty(String key) {
         return properties.getProperty(key);
+    }
+
+    public String getProperty(String key, String defaultValue) {
+        return properties.getProperty(key, defaultValue);
     }
 
 }

@@ -37,18 +37,26 @@ public class BrowserFactory {
             case FIREFOX:
                 driver = new CreateFireFoxDriver().create();
                 break;
-            case REMOTE:  DesiredCapabilities capabilities = new DesiredCapabilities();
-                capabilities.setCapability("browserName", "chrome");
+            case REMOTE:
+                String browser = System.getProperty("browser", "chrome");
+                DesiredCapabilities capabilities = new DesiredCapabilities();
+                //capabilities.setCapability("browserName", browser);
                 capabilities.setCapability("browserVersion", "109.0");
                 capabilities.setCapability("selenoid:options", Map.<String, Object>of(
                         "enableVNC", true,
                         "enableVideo", true
                 ));
+                capabilities.setBrowserName(browser);
+                switch (browser) {
+                    case "chrome":
+                    case "firefox":
+                        capabilities.setVersion("109.0");
+                        break;
+                }
                 try {
                     driver = new RemoteWebDriver(
                             URI.create("http://149.154.71.152:8080/wd/hub").toURL(),
-                            capabilities
-                    );
+                            capabilities);
                 } catch (MalformedURLException e) {
                     e.printStackTrace();
                 }
@@ -60,3 +68,4 @@ public class BrowserFactory {
     }
 
 }
+

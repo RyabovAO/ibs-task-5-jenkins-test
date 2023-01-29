@@ -10,6 +10,8 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.time.Duration;
 
@@ -23,6 +25,7 @@ public class BasePage {
     protected WebDriverWait wait = new WebDriverWait(driverManager.getDriver(),
             Duration.ofSeconds(Long.parseLong(props.getProperty(PropConst.EXPECTED_COND_TIMEOUT))),
             Duration.ofSeconds(Long.parseLong(props.getProperty(PropConst.EXPECTED_COND_SLEEP))));
+    protected Logger logger = LoggerFactory.getLogger(BasePage.class);
 
     public BasePage() {
         PageFactory.initElements(driverManager.getDriver(), this);

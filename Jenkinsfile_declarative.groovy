@@ -14,7 +14,7 @@ pipeline {
         }
         stage('Run Tests') {
             steps {
-                sh "${mvn} test -Dcucumber.filter.tags=${params.TAG}"
+                sh "${mvn} clen test"
             }
         }
         stage('Allure Report Generation') {
