@@ -1,10 +1,9 @@
-def mvn = "/var/lib/jenkins/tools/hudson.tasks.Maven_MavenInstallation/maven_3.8.7/bin/mvn"
+def mvn = "/var/lib/jenkins/tools/hudson.tasks.Maven_MavenInstallation/maven_3.6.3/bin/mvn"
 
 pipeline {
     agent any
     parameters {
         string(name: 'BRANCH', defaultValue: 'master', description: '')
-        string(name: 'TAG', defaultValue: '@example', description: '')
     }
     stages {
         stage('Build') {
