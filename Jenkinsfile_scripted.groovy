@@ -1,11 +1,11 @@
-def mvn = "/var/lib/jenkins/tools/hudson.tasks.Maven_MavenInstallation/maven_3.8.7/bin/mvn"
+def mvn = "/var/lib/jenkins/tools/hudson.tasks.Maven_MavenInstallation/maven_3.6.3/bin/mvn"
 
 node {
     stage('Checkout SCM') {
         checkout(
                 [$class: 'GitSCM',
                  branches: [[name: "refs/heads/${BRANCH}"]],
-                 userRemoteConfigs: [[url: 'https://github.com/AntonBalakirev/pizza_order_automation.git']]]
+                 userRemoteConfigs: [[url: 'https://github.com/RyabovAO/ibs-task-5-jenkins-test']]]
         )
     }
     stage('Build') {
@@ -13,7 +13,7 @@ node {
     }
     stage('Run Tests') {
         try {
-            sh "${mvn} test -Dcucumber.filter.tags=\"${TAG}\""
+            sh "${mvn} clean test -Dbrowser=${BROWSER}"
         }
         catch (Exception e) {
             echo "Test run was broken"
