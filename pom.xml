@@ -10,7 +10,7 @@
 
     <properties>
         <!-- java.version -->
-        <java.version>16</java.version>
+        <java.version>11</java.version>
 
         <!-- UTF-8 -->
         <encoding.type>UTF-8</encoding.type>
